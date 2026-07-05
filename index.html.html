@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Namma Yazhii — Premium Cotton Tees</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0A0806;--white:#F7F3EC;--red:#D42B0A;--red2:#FF3D1A;--gold:#E8A820;--gray:#161410;--gray2:#201E1B;--gray3:#2C2925;--muted:#7A7060;--border:#2A2620;--green:#22C55E;--card:#131210;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;}
+
+.marquee{background:var(--red);padding:9px 0;overflow:hidden;white-space:nowrap;}
+.marquee-inner{display:inline-flex;animation:scroll 20s linear infinite;}
+.marquee-inner span{font-family:'Bebas Neue';font-size:13px;letter-spacing:3px;padding:0 24px;color:white;}
+.marquee-inner .sep{opacity:.4;padding:0 4px;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(10,8,6,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:62px;}
+.logo{font-family:'Bebas Neue';font-size:26px;letter-spacing:4px;color:var(--white);text-decoration:none;}
+.logo span{color:var(--red);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--white);}
+.cart-pill{background:var(--red);color:white;border:none;padding:9px 20px;font-family:'Barlow';font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px;border-radius:2px;transition:background .2s;}
+.cart-pill:hover{background:var(--red2);}
+.cart-badge{background:white;color:var(--red);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;}
+
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-l{padding:80px 52px;display:flex;flex-direction:column;justify-content:center;z-index:2;}
+.hero-chip{display:inline-flex;align-items:center;gap:6px;background:var(--gray2);border:1px solid var(--border);padding:5px 14px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;width:fit-content;}
+.hero-h1{font-family:'Bebas Neue';font-size:clamp(60px,8vw,108px);line-height:.9;letter-spacing:2px;margin-bottom:12px;}
+.hero-h1 .outline{-webkit-text-stroke:2px var(--white);color:transparent;}
+.hero-h1 .fill{color:var(--white);}
+.hero-h1 .red{color:var(--red);}
+.hero-sub{font-size:15px;font-style:italic;color:var(--muted);margin:14px 0 22px;font-weight:300;}
+.hero-desc{font-size:15px;font-weight:300;color:#999;line-height:1.75;max-width:380px;margin-bottom:32px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-red{background:var(--red);color:white;border:none;padding:15px 36px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;text-decoration:none;display:inline-block;transition:background .2s,transform .15s;}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid var(--border);padding:15px 36px;font-family:'Barlow';font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;text-decoration:none;display:inline-block;transition:border-color .2s,transform .15s;}
+.btn-outline:hover{border-color:var(--white);transform:translateY(-2px);}
+.hero-stats{display:flex;gap:36px;margin-top:44px;padding-top:28px;border-top:1px solid var(--border);}
+.stat-n{font-family:'Bebas Neue';font-size:34px;color:var(--red);line-height:1;}
+.stat-l{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.hero-r{background:var(--gray);position:relative;overflow:hidden;}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:44px 44px;opacity:.35;}
+.hero-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.hero-card{width:300px;height:340px;background:var(--gray2);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(-4deg);transition:transform .5s;}
+.hero-card:hover{transform:rotate(0);}
+.hero-tee{font-size:110px;margin-bottom:14px;filter:drop-shadow(0 16px 32px rgba(212,43,10,.25));}
+.hero-card-lbl{font-family:'Bebas Neue';font-size:18px;letter-spacing:4px;color:var(--red);}
+.hero-spin{position:absolute;top:24px;right:24px;width:72px;height:72px;background:var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Bebas Neue';font-size:18px;animation:spin 14s linear infinite;line-height:1;}
+.hero-spin small{font-family:'Barlow';font-size:8px;letter-spacing:1px;font-weight:500;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+.features{background:var(--gray2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:36px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;}
+.feat{display:flex;align-items:flex-start;gap:14px;}
+.feat-icon{font-size:26px;flex-shrink:0;}
+.feat-t{font-size:14px;font-weight:700;margin-bottom:3px;}
+.feat-d{font-size:12px;color:var(--muted);line-height:1.5;}
+
+.shop{padding:72px 32px;}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:12px;}
+.sec-eye{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:7px;}
+.sec-title{font-family:'Bebas Neue';font-size:clamp(36px,5vw,58px);letter-spacing:2px;line-height:1;}
+.sec-title .dim{color:var(--muted);}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;align-items:center;}
+.f-lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-right:6px;}
+.f-btn{background:var(--gray2);border:1px solid var(--border);color:var(--muted);padding:7px 16px;font-family:'Barlow';font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;}
+.f-btn:hover,.f-btn.on{background:var(--red);border-color:var(--red);color:white;}
+
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px;}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:3px;overflow:hidden;transition:transform .25s,border-color .25s;position:relative;}
+.pcard:hover{transform:translateY(-5px);border-color:var(--red);}
+.pimg{width:100%;aspect-ratio:1;background:var(--gray2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.pimg-e{font-size:80px;transition:transform .4s;}
+.pcard:hover .pimg-e{transform:scale(1.12) rotate(-6deg);}
+.poverlay{position:absolute;inset:0;background:rgba(10,8,6,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;opacity:0;transition:opacity .25s;}
+.pcard:hover .poverlay{opacity:1;}
+.povbtn{background:var(--red);color:white;border:none;padding:10px 0;font-family:'Barlow';font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;width:78%;border-radius:2px;transition:background .2s;}
+.povbtn:hover{background:var(--red2);}
+.povbtn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.25);color:var(--white);}
+.povbtn.ghost:hover{border-color:white;}
+.pbadge{position:absolute;top:10px;left:10px;font-family:'Bebas Neue';font-size:12px;letter-spacing:2px;padding:3px 9px;border-radius:2px;}
+.new-b{background:var(--gold);color:#000;}
+.hot-b{background:var(--red);color:white;}
+.pinfo{padding:15px 16px 18px;}
+.pname{font-size:14px;font-weight:600;margin-bottom:3px;}
+.pvar{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.pcolors{display:flex;gap:5px;margin-bottom:10px;}
+.cdot{width:14px;height:14px;border-radius:50%;border:2px solid var(--border);cursor:pointer;transition:border-color .15s,transform .15s;}
+.cdot:hover{border-color:var(--white);transform:scale(1.2);}
+.pfooter{display:flex;align-items:center;justify-content:space-between;}
+.pprice{font-family:'Bebas Neue';font-size:20px;color:var(--white);}
+.pprice .orig{font-size:13px;color:var(--muted);text-decoration:line-through;margin-left:5px;font-family:'Barlow';font-weight:400;}
+.qadd{background:var(--gray2);border:1px solid var(--border);color:var(--white);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:300;transition:background .2s,border-color .2s;}
+.qadd:hover{background:var(--red);border-color:var(--red);}
+
+.about{padding:90px 32px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-vis{background:var(--gray2);border:1px solid var(--border);aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.about-big{font-family:'Bebas Neue';font-size:130px;color:var(--border);letter-spacing:10px;position:relative;z-index:2;}
+.about-line{position:absolute;bottom:0;left:0;width:100%;height:4px;background:var(--red);}
+.about p{font-size:14px;font-weight:300;color:#999;line-height:1.85;margin-bottom:18px;}
+.about p strong{color:var(--white);font-weight:600;}
+
+footer{background:var(--gray2);border-top:1px solid var(--border);padding:56px 32px 28px;}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px;}
+.fbrand .logo{font-size:28px;display:block;margin-bottom:10px;}
+.fbrand p{font-size:13px;color:var(--muted);line-height:1.7;max-width:260px;}
+.fcol h4{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+.fcol a{display:block;font-size:13px;color:var(--muted);text-decoration:none;margin-bottom:7px;transition:color .2s;}
+.fcol a:hover{color:var(--white);}
+.fbot{border-top:1px solid var(--border);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.fbot p{font-size:12px;color:var(--muted);}
+
+/* CART */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:400px;max-width:100vw;background:var(--gray);border-left:1px solid var(--border);z-index:201;transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;}
+.cart-drawer.open{transform:translateX(0);}
+.cdh{padding:22px 26px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.cd-title{font-family:'Bebas Neue';font-size:26px;letter-spacing:2px;}
+.cd-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;transition:color .2s;}
+.cd-close:hover{color:var(--white);}
+.cd-items{flex:1;overflow-y:auto;padding:18px 26px;}
+.cd-items::-webkit-scrollbar{width:3px;}
+.cd-items::-webkit-scrollbar-thumb{background:var(--border);}
+.cd-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);gap:10px;}
+.cd-empty-ic{font-size:44px;}
+.cd-empty-t{font-size:14px;letter-spacing:1px;}
+.cdi{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);}
+.cdi-img{width:68px;height:68px;background:var(--gray2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0;}
+.cdi-info{flex:1;}
+.cdi-name{font-size:14px;font-weight:600;margin-bottom:3px;}
+.cdi-var{font-size:11px;color:var(--muted);margin-bottom:9px;}
+.cdi-ctrl{display:flex;align-items:center;gap:8px;}
+.qbtn{background:var(--gray2);border:1px solid var(--border);color:var(--white);width:24px;height:24px;border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:background .15s;}
+.qbtn:hover{background:var(--red);border-color:var(--red);}
+.qn{font-size:13px;font-weight:600;min-width:18px;text-align:center;}
+.cdi-rm{background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;margin-left:auto;transition:color .2s;}
+.cdi-rm:hover{color:var(--red);}
+.cdi-price{font-family:'Bebas Neue';font-size:17px;color:var(--red);white-space:nowrap;}
+.cd-foot{padding:18px 26px;border-top:1px solid var(--border);background:var(--black);}
+.cd-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.cd-tot-lbl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.cd-tot-amt{font-family:'Bebas Neue';font-size:28px;}
+.wa-btn{width:100%;background:#25D366;color:white;border:none;padding:14px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:2px;margin-bottom:8px;transition:background .2s;}
+.wa-btn:hover{background:#1EAF55;}
+.upi-btn{width:100%;background:var(--gray2);color:var(--white);border:1px solid var(--border);padding:13px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;border-radius:2px;margin-bottom:10px;transition:background .2s,border-color .2s;}
+.upi-btn:hover{background:var(--gray3);border-color:var(--muted);}
+.cd-note{font-size:11px;color:var(--muted);text-align:center;line-height:1.6;}
+
+/* SIZE MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;}
+.modal-bg.open{opacity:1;pointer-events:all;}
+.modal{background:var(--gray);border:1px solid var(--border);width:420px;max-width:96vw;border-radius:4px;transform:translateY(18px);transition:transform .25s;overflow:hidden;}
+.modal-bg.open .modal{transform:translateY(0);}
+.mh{padding:22px 26px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.m-title{font-family:'Bebas Neue';font-size:24px;letter-spacing:2px;}
+.m-close{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;transition:color .2s;}
+.m-close:hover{color:var(--white);}
+.mb{padding:22px 26px;}
+.m-pname{font-size:17px;font-weight:600;margin-bottom:3px;}
+.m-pprice{font-family:'Bebas Neue';font-size:26px;color:var(--red);margin-bottom:20px;}
+.m-lbl{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.sizes{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;}
+.sz{background:var(--gray2);border:1.5px solid var(--border);color:var(--white);width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;border-radius:2px;transition:all .15s;}
+.sz:hover,.sz.on{background:var(--red);border-color:var(--red);color:white;}
+.m-add{width:100%;background:var(--red);color:white;border:none;padding:15px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;}
+.m-add:hover{background:var(--red2);}
+
+/* UPI MODAL */
+.upi-modal{background:var(--gray);border:1px solid var(--border);width:440px;max-width:96vw;border-radius:4px;transform:translateY(18px);transition:transform .25s;overflow:hidden;}
+.modal-bg.open .upi-modal{transform:translateY(0);}
+.upi-body{padding:28px;}
+.upi-body h3{font-family:'Bebas Neue';font-size:22px;letter-spacing:2px;margin-bottom:4px;color:var(--muted);}
+.upi-amt-big{font-size:42px;font-family:'Bebas Neue';color:var(--red);margin-bottom:22px;letter-spacing:2px;}
+.qr-wrap{background:var(--white);padding:14px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.upi-id-box{background:var(--gray2);border:1px solid var(--border);padding:12px 16px;border-radius:2px;font-size:14px;font-weight:600;letter-spacing:1px;color:var(--gold);text-align:center;margin-bottom:16px;}
+.upi-steps{font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:22px;padding-left:18px;}
+.upi-steps li{margin-bottom:2px;}
+.upi-steps strong{color:var(--white);}
+.upi-done-btn{width:100%;background:var(--green);color:white;border:none;padding:14px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-bottom:8px;transition:background .2s;}
+.upi-done-btn:hover{background:#1aab52;}
+.upi-cancel-btn{width:100%;background:transparent;color:var(--muted);border:1px solid var(--border);padding:12px;font-family:'Barlow';font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;}
+.upi-cancel-btn:hover{color:var(--white);border-color:var(--white);}
+
+/* SUCCESS */
+.success-modal{background:var(--gray);border:1px solid var(--green);width:380px;max-width:96vw;border-radius:4px;transform:translateY(18px);transition:transform .25s;padding:36px;text-align:center;}
+.modal-bg.open .success-modal{transform:translateY(0);}
+.suc-ic{font-size:56px;margin-bottom:16px;}
+.suc-title{font-family:'Bebas Neue';font-size:32px;letter-spacing:2px;color:var(--green);margin-bottom:8px;}
+.suc-desc{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;}
+.suc-close{width:100%;background:var(--red);color:white;border:none;padding:14px;font-family:'Barlow';font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:2px;}
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(14px);background:var(--gray2);border:1px solid var(--green);color:white;padding:11px 22px;font-size:13px;font-weight:500;letter-spacing:.5px;border-radius:3px;z-index:500;opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+@media(max-width:900px){
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-r{display:none;}
+  .hero-l{padding:52px 20px;}
+  .shop,.about{padding:52px 16px;}
+  .about{grid-template-columns:1fr;}
+  .about-vis{display:none;}
+  .features{padding:28px 16px;}
+  .ftop{grid-template-columns:1fr 1fr;}
+  footer{padding:36px 16px 22px;}
+}
+@media(max-width:500px){
+  .pgrid{grid-template-columns:1fr 1fr;gap:10px;}
+  .ftop{grid-template-columns:1fr;}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.hero-chip{animation:fadeUp .5s ease both;}
+.hero-h1{animation:fadeUp .5s .1s ease both;}
+.hero-sub{animation:fadeUp .5s .2s ease both;}
+.hero-desc{animation:fadeUp .5s .3s ease both;}
+.hero-btns{animation:fadeUp .5s .4s ease both;}
+.hero-stats{animation:fadeUp .5s .5s ease both;}
+</style>
+</head>
+<body>
+
+<div class="marquee">
+  <div class="marquee-inner">
+    <span>FREE SHIPPING ABOVE ₹999</span><span class="sep"> ✦ </span>
+    <span>PREMIUM COTTON TEES</span><span class="sep"> ✦ </span>
+    <span>TAMIL MADE. PROUDLY.</span><span class="sep"> ✦ </span>
+    <span>யாழியின் வலிமை</span><span class="sep"> ✦ </span>
+    <span>PAY VIA UPI OR WHATSAPP</span><span class="sep"> ✦ </span>
+    <span>FREE SHIPPING ABOVE ₹999</span><span class="sep"> ✦ </span>
+    <span>PREMIUM COTTON TEES</span><span class="sep"> ✦ </span>
+    <span>TAMIL MADE. PROUDLY.</span><span class="sep"> ✦ </span>
+    <span>யாழியின் வலிமை</span><span class="sep"> ✦ </span>
+    <span>PAY VIA UPI OR WHATSAPP</span><span class="sep"> ✦ </span>
+  </div>
+</div>
+
+<nav>
+  <a href="#" class="logo">NAMMA<span>.</span>YAZHII</a>
+  <ul class="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="cart-pill" onclick="toggleCart()">
+    🛒 Cart <span class="cart-badge" id="cartBadge">0</span>
+  </button>
+</nav>
+
+<section class="hero">
+  <div class="hero-l">
+    <div class="hero-chip">✦ New Collection 2024</div>
+    <h1 class="hero-h1">
+      <span class="fill">WEAR</span><br>
+      <span class="outline">NAMMA</span><br>
+      <span class="red">YAZHII</span>
+    </h1>
+    <p class="hero-sub">யாழியின் வலிமை. நூலின் நேர்த்தி.</p>
+    <p class="hero-desc">Premium cotton tees crafted for everyday comfort. Born in Tamil Nadu, built for everyone who refuses to compromise.</p>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-red">Shop Now</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">500+</div><div class="stat-l">Customers</div></div>
+      <div><div class="stat-n">100%</div><div class="stat-l">Pure Cotton</div></div>
+      <div><div class="stat-n">16+</div><div class="stat-l">Styles</div></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-center">
+      <div class="hero-card">
+        <div class="hero-tee">👕</div>
+        <div class="hero-card-lbl">Premium Tee</div>
+      </div>
+      <div class="hero-spin">NEW<br><small>DROP</small></div>
+    </div>
+  </div>
+</section>
+
+<div class="features">
+  <div class="feat"><span class="feat-icon">🚚</span><div><div class="feat-t">Free Shipping</div><div class="feat-d">On orders above ₹999. Pan India.</div></div></div>
+  <div class="feat"><span class="feat-icon">🌿</span><div><div class="feat-t">100% Cotton</div><div class="feat-d">Premium combed cotton. Breathable.</div></div></div>
+  <div class="feat"><span class="feat-icon">💳</span><div><div class="feat-t">UPI & WhatsApp</div><div class="feat-d">Pay via UPI or order on WhatsApp.</div></div></div>
+  <div class="feat"><span class="feat-icon">🔄</span><div><div class="feat-t">Easy Returns</div><div class="feat-d">7-day hassle-free returns.</div></div></div>
+</div>
+
+<section class="shop" id="shop">
+  <div class="sec-head">
+    <div>
+      <div class="sec-eye">Collection 2024</div>
+      <div class="sec-title">OUR <span class="dim">TEES</span></div>
+    </div>
+  </div>
+  <div class="filters">
+    <span class="f-lbl">Filter:</span>
+    <button class="f-btn on" onclick="doFilter('all',this)">All</button>
+    <button class="f-btn" onclick="doFilter('classic',this)">Classic</button>
+    <button class="f-btn" onclick="doFilter('oversized',this)">Oversized</button>
+    <button class="f-btn" onclick="doFilter('graphic',this)">Graphic</button>
+    <button class="f-btn" onclick="doFilter('new',this)">New Arrivals</button>
+  </div>
+  <div class="pgrid" id="pgrid"></div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-vis">
+    <div class="about-big">NY</div>
+    <div class="about-line"></div>
+  </div>
+  <div>
+    <div class="sec-eye">Our Story</div>
+    <div class="sec-title" style="margin-bottom:26px">MADE WITH<br><span class="dim">PURPOSE</span></div>
+    <p>Namma Yazhii was born from a simple frustration — <strong>finding a quality cotton tee in Tamil Nadu shouldn't be this hard.</strong> We decided to fix that.</p>
+    <p>Every tee uses <strong>premium combed cotton</strong> — softer, stronger, and more breathable. We obsess over stitching, collar structure, and the perfect fit.</p>
+    <p>We're a small Tamil brand and <strong>every order genuinely means the world to us.</strong> Every package includes a personal thank-you note.</p>
+    <a href="#shop" class="btn-red" style="margin-top:8px;display:inline-block">Shop Now</a>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="ftop">
+    <div class="fbrand">
+      <a href="#" class="logo">NAMMA<span style="color:var(--red)">.</span>YAZHII</a>
+      <p>Premium cotton tees. Tamil made, built with love for everyone.</p>
+    </div>
+    <div class="fcol">
+      <h4>Shop</h4>
+      <a href="#shop">All Tees</a>
+      <a href="#shop">Classic Fit</a>
+      <a href="#shop">Oversized</a>
+      <a href="#shop">Graphic Tees</a>
+    </div>
+    <div class="fcol">
+      <h4>Help</h4>
+      <a href="#">Size Guide</a>
+      <a href="#">Shipping Info</a>
+      <a href="#">Returns</a>
+    </div>
+    <div class="fcol">
+      <h4>Connect</h4>
+      <a href="https://www.instagram.com/namma_yazhii" target="_blank">📸 Instagram</a>
+      <a href="https://wa.me/919597371083" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2024 Namma Yazhii. All rights reserved.</p>
+    <p>யாழியின் வலிமை. நூலின் நேர்த்தி.</p>
+  </div>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cdh">
+    <div class="cd-title">YOUR CART</div>
+    <button class="cd-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cd-items" id="cdItems">
+    <div class="cd-empty"><div class="cd-empty-ic">🛒</div><div class="cd-empty-t">Cart is empty</div></div>
+  </div>
+  <div class="cd-foot">
+    <div class="cd-total">
+      <span class="cd-tot-lbl">Total</span>
+      <span class="cd-tot-amt" id="cdTotal">₹0</span>
+    </div>
+    <button class="wa-btn" onclick="orderWhatsApp()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Order via WhatsApp
+    </button>
+    <button class="upi-btn" onclick="openUPI()">💳 Pay via UPI</button>
+    <div class="cd-note">WhatsApp: we confirm & arrange delivery.<br>UPI: pay directly, then notify us on WhatsApp.</div>
+  </div>
+</div>
+
+<!-- SIZE MODAL -->
+<div class="modal-bg" id="sizeBg" onclick="closeSizeBg(event)">
+  <div class="modal">
+    <div class="mh">
+      <div class="m-title">SELECT SIZE</div>
+      <button class="m-close" onclick="closeSizeDirect()">✕</button>
+    </div>
+    <div class="mb">
+      <div class="m-pname" id="mName"></div>
+      <div class="m-pprice" id="mPrice"></div>
+      <div class="m-lbl">Size</div>
+      <div class="sizes" id="sizeOpts">
+        <div class="sz" onclick="pickSz(this)">XS</div>
+        <div class="sz" onclick="pickSz(this)">S</div>
+        <div class="sz on" onclick="pickSz(this)">M</div>
+        <div class="sz" onclick="pickSz(this)">L</div>
+        <div class="sz" onclick="pickSz(this)">XL</div>
+        <div class="sz" onclick="pickSz(this)">XXL</div>
+      </div>
+      <button class="m-add" onclick="confirmAdd()">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPI MODAL -->
+<div class="modal-bg" id="upiBg" onclick="closeUpiBg(event)">
+  <div class="upi-modal">
+    <div class="mh">
+      <div class="m-title">PAY VIA UPI</div>
+      <button class="m-close" onclick="closeUpiDirect()">✕</button>
+    </div>
+    <div class="upi-body">
+      <h3>Order Total</h3>
+      <div class="upi-amt-big" id="upiAmt">₹0</div>
+      <div class="qr-wrap" id="qrWrap"></div>
+      <div class="upi-id-box">UPI ID: Vishnu2813@ybl</div>
+      <ol class="upi-steps">
+        <li>Open GPay, PhonePe, Paytm or any UPI app</li>
+        <li>Scan the QR above <strong>or</strong> pay to <strong>Vishnu2813@ybl</strong></li>
+        <li>Enter the exact amount shown above</li>
+        <li>Tap the button below after payment to notify us</li>
+      </ol>
+      <button class="upi-done-btn" onclick="upiDone()">✓ Done — Notify via WhatsApp</button>
+      <button class="upi-cancel-btn" onclick="closeUpiDirect()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-bg" id="successBg">
+  <div class="success-modal">
+    <div class="suc-ic">🎉</div>
+    <div class="suc-title">Order Placed!</div>
+    <div class="suc-desc">Your order has been sent to Namma Yazhii on WhatsApp. We'll confirm and arrange delivery within 24 hours. Thank you so much! 🙏</div>
+    <button class="suc-close" onclick="closeSuccess()">Close</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const WA  = '919597371083';
+const UPI = 'Vishnu2813@ybl';
+const UPI_NAME = 'Namma Yazhii';
+
+const products = [
+  {id:1,name:'Classic White Tee',cat:'classic',price:599,orig:799,emoji:'👕',colors:['#F8F5F0','#E0E0E0'],badge:'hot',isNew:true},
+  {id:2,name:'Midnight Black Tee',cat:'classic',price:599,orig:799,emoji:'🖤',colors:['#1A1A1A','#333'],badge:'hot',isNew:false},
+  {id:3,name:'Ocean Blue Tee',cat:'classic',price:649,orig:849,emoji:'💙',colors:['#1E3A5F','#4A7AAF'],badge:'new',isNew:true},
+  {id:4,name:'Forest Green Tee',cat:'classic',price:649,orig:849,emoji:'💚',colors:['#2D5A3D','#3D7A4D'],badge:'',isNew:false},
+  {id:5,name:'Oversized Caramel',cat:'oversized',price:799,orig:999,emoji:'🟫',colors:['#8B6914','#A07820'],badge:'new',isNew:true},
+  {id:6,name:'Oversized White Cloud',cat:'oversized',price:799,orig:999,emoji:'☁️',colors:['#FFF','#F0EDE8'],badge:'hot',isNew:false},
+  {id:7,name:'Tamil Pride Graphic',cat:'graphic',price:699,orig:899,emoji:'🎨',colors:['#B84A2E','#D05A3E'],badge:'hot',isNew:true},
+  {id:8,name:'NY Script Tee',cat:'graphic',price:699,orig:899,emoji:'✍️',colors:['#1A1A1A','#F8F5F0'],badge:'new',isNew:true},
+  {id:9,name:'Sunset Orange Tee',cat:'classic',price:649,orig:849,emoji:'🧡',colors:['#C96A2A','#E07A3A'],badge:'',isNew:false},
+  {id:10,name:'Rose Pink Tee',cat:'classic',price:649,orig:849,emoji:'🩷',colors:['#D4728A','#E48A9A'],badge:'new',isNew:true},
+  {id:11,name:'Oversized Striped',cat:'oversized',price:849,orig:1099,emoji:'👔',colors:['#2A2A4A','#F8F5F0'],badge:'',isNew:false},
+  {id:12,name:'Yazhii Logo Tee',cat:'graphic',price:749,orig:949,emoji:'🏷️',colors:['#1A1A1A','#C96A2A'],badge:'hot',isNew:false},
+  {id:13,name:'Stone Grey Classic',cat:'classic',price:599,orig:799,emoji:'🩶',colors:['#6B6B6B','#8B8B8B'],badge:'',isNew:false},
+  {id:14,name:'Oversized Olive',cat:'oversized',price:849,orig:1099,emoji:'🌿',colors:['#4A5A2A','#5A6A3A'],badge:'new',isNew:true},
+  {id:15,name:'Abstract Art Tee',cat:'graphic',price:799,orig:999,emoji:'🖼️',colors:['#1A1A1A','#C9922A'],badge:'new',isNew:true},
+  {id:16,name:'Namma Script Tee',cat:'graphic',price:749,orig:949,emoji:'📜',colors:['#1A1A1A','#F8F5F0'],badge:'hot',isNew:false},
+  {id:17,name:'Sky Blue Oversized',cat:'oversized',price:849,orig:1099,emoji:'🩵',colors:['#5A90C0','#6AA0D0'],badge:'',isNew:false},
+  {id:18,name:'Maroon Classic',cat:'classic',price:599,orig:799,emoji:'❤️',colors:['#6B1A1A','#8B2A2A'],badge:'',isNew:false},
+];
+
+let cart=[], curP=null;
+
+function renderGrid(f='all'){
+  const list = f==='all'?products:f==='new'?products.filter(p=>p.isNew):products.filter(p=>p.cat===f);
+  document.getElementById('pgrid').innerHTML=list.map(p=>`
+    <div class="pcard">
+      <div class="pimg">
+        <div class="pimg-e">${p.emoji}</div>
+        ${p.badge==='new'?'<span class="pbadge new-b">NEW</span>':p.badge==='hot'?'<span class="pbadge hot-b">🔥 HOT</span>':''}
+        <div class="poverlay">
+          <button class="povbtn" onclick="openSize(${p.id})">Add to Cart</button>
+          <button class="povbtn ghost" onclick="quickAdd(${p.id})">Quick Add — M</button>
+        </div>
+      </div>
+      <div class="pinfo">
+        <div class="pname">${p.name}</div>
+        <div class="pvar">Premium Cotton · Regular Fit</div>
+        <div class="pcolors">${p.colors.map(c=>`<div class="cdot" style="background:${c}"></div>`).join('')}</div>
+        <div class="pfooter">
+          <div class="pprice">₹${p.price}<span class="orig">₹${p.orig}</span></div>
+          <button class="qadd" onclick="openSize(${p.id})">+</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function doFilter(f,btn){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderGrid(f);
+}
+
+// SIZE MODAL
+function openSize(id){
+  curP=products.find(p=>p.id===id);
+  document.getElementById('mName').textContent=curP.name;
+  document.getElementById('mPrice').textContent='₹'+curP.price;
+  document.querySelectorAll('.sz').forEach((el,i)=>el.classList.toggle('on',i===2));
+  document.getElementById('sizeBg').classList.add('open');
+}
+function pickSz(el){document.querySelectorAll('.sz').forEach(e=>e.classList.remove('on'));el.classList.add('on');}
+function closeSizeBg(e){if(e.target===document.getElementById('sizeBg'))closeSizeDirect();}
+function closeSizeDirect(){document.getElementById('sizeBg').classList.remove('open');}
+function confirmAdd(){
+  const sz=document.querySelector('.sz.on')?.textContent||'M';
+  addToCart(curP,sz);
+  closeSizeDirect();
+}
+function quickAdd(id){addToCart(products.find(p=>p.id===id),'M');}
+
+// CART
+function addToCart(p,size){
+  const key=`${p.id}-${size}`;
+  const ex=cart.find(i=>i.key===key);
+  if(ex)ex.qty++;else cart.push({key,p,size,qty:1});
+  renderCart();
+  showToast(`✓ ${p.name} (${size}) added!`);
+}
+function changeQty(key,d){
+  const it=cart.find(i=>i.key===key);
+  if(!it)return;
+  it.qty+=d;
+  if(it.qty<=0)cart=cart.filter(i=>i.key!==key);
+  renderCart();
+}
+function removeItem(key){cart=cart.filter(i=>i.key!==key);renderCart();}
+function total(){return cart.reduce((s,i)=>s+i.p.price*i.qty,0);}
+function count(){return cart.reduce((s,i)=>s+i.qty,0);}
+
+function renderCart(){
+  document.getElementById('cartBadge').textContent=count();
+  document.getElementById('cdTotal').textContent='₹'+total();
+  const el=document.getElementById('cdItems');
+  if(!cart.length){el.innerHTML='<div class="cd-empty"><div class="cd-empty-ic">🛒</div><div class="cd-empty-t">Cart is empty</div></div>';return;}
+  el.innerHTML=cart.map(i=>`
+    <div class="cdi">
+      <div class="cdi-img">${i.p.emoji}</div>
+      <div class="cdi-info">
+        <div class="cdi-name">${i.p.name}</div>
+        <div class="cdi-var">Size: ${i.size}</div>
+        <div class="cdi-ctrl">
+          <button class="qbtn" onclick="changeQty('${i.key}',-1)">−</button>
+          <span class="qn">${i.qty}</span>
+          <button class="qbtn" onclick="changeQty('${i.key}',1)">+</button>
+          <button class="cdi-rm" onclick="removeItem('${i.key}')">✕</button>
+        </div>
+      </div>
+      <div class="cdi-price">₹${i.p.price*i.qty}</div>
+    </div>`).join('');
+}
+
+function toggleCart(){
+  document.getElementById('cartDrawer').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+}
+
+// WHATSAPP
+function orderWhatsApp(){
+  if(!cart.length){showToast('Your cart is empty!');return;}
+  let msg=`Hello Namma Yazhii! 👋\n\nI'd like to place an order:\n\n`;
+  cart.forEach(i=>{msg+=`• ${i.p.name} — Size: ${i.size} × ${i.qty} = ₹${i.p.price*i.qty}\n`;});
+  msg+=`\n*Total: ₹${total()}*\n\nPlease confirm and share delivery details. Thank you! 🙏`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+// UPI
+let qrDone=false;
+function openUPI(){
+  if(!cart.length){showToast('Your cart is empty!');return;}
+  const amt=total();
+  document.getElementById('upiAmt').textContent='₹'+amt;
+  document.getElementById('upiBg').classList.add('open');
+  if(!qrDone){
+    const wrap=document.getElementById('qrWrap');
+    wrap.innerHTML='';
+    const upiLink=`upi://pay?pa=${UPI}&pn=${encodeURIComponent(UPI_NAME)}&am=${amt}&cu=INR`;
+    try{
+      new QRCode(wrap,{text:upiLink,width:176,height:176,colorDark:'#0A0806',colorLight:'#F7F3EC',correctLevel:QRCode.CorrectLevel.M});
+      qrDone=true;
+    }catch(e){
+      wrap.innerHTML='<p style="color:#666;font-size:12px;padding:8px;text-align:center">QR unavailable<br>Use UPI ID below</p>';
+    }
+  }
+}
+function closeUpiBg(e){if(e.target===document.getElementById('upiBg'))closeUpiDirect();}
+function closeUpiDirect(){document.getElementById('upiBg').classList.remove('open');qrDone=false;}
+
+function upiDone(){
+  closeUpiDirect();
+  let msg=`Hello Namma Yazhii! 👋\n\nI've paid ₹${total()} via UPI to ${UPI}.\n\nMy order:\n`;
+  cart.forEach(i=>{msg+=`• ${i.p.name} — Size: ${i.size} × ${i.qty}\n`;});
+  msg+=`\nPlease confirm receipt & arrange delivery. Thank you! 🙏`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank');
+  cart=[];renderCart();
+  if(document.getElementById('cartDrawer').classList.contains('open'))toggleCart();
+  setTimeout(()=>document.getElementById('successBg').classList.add('open'),400);
+}
+
+function closeSuccess(){document.getElementById('successBg').classList.remove('open');}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+renderGrid();
+</script>
+</body>
+</html>
